@@ -13,6 +13,7 @@ The DVD rental database represents the business processes of a DVD rental store.
 Postgre SQL
 PgAdmin4
 Schema- DVD Rental Database
+Database source :https://neon.tech/postgresql/postgresql-getting-started/postgresql-sample-database
 
 ![image](https://github.com/user-attachments/assets/b2019ca9-93d5-45da-831d-d9bd0283a0f8)
 
