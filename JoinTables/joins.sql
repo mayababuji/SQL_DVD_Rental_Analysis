@@ -47,6 +47,9 @@ INNER JOIN basket_b
     ON fruit_a = fruit_b;
 --****************************************************************************************************************************************--
 --PostgreSQL left join
+-- Left Table: The table that appears immediately after FROM
+
+-- Right Table: The table that appears after JOIN
 --****************************************************************************************************************************************--
 --In the left join context, the first table is called the left table and the second table is called the right table.
 SELECT
@@ -70,3 +73,85 @@ FROM
 LEFT JOIN basket_b
     ON fruit_a = fruit_b
 WHERE b IS NULL;   
+
+---Left Anti-Join returns rows from the left table that do not have matching rows from the right table:
+--Returns:SELECT basket_a.* Only columns from table basket_a (not from basket_b).If select * is used instead all columns from both tables basket_a and basket_b
+SELECT
+	basket_a.*
+	FROM basket_a
+LEFT JOIN basket_b
+ON fruit_a = fruit_b
+WHERE b is NULL
+
+--****************************************************************************************************************************************--
+--PostgreSQL right join
+--****************************************************************************************************************************************--
+--The RIGHT JOIN and RIGHT OUTER JOIN are the same therefore you can use them interchangeably
+SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+RIGHT JOIN basket_b ON fruit_a = fruit_b;
+--rows from the right table that do not have matching rows from the left table can be retrieved by added a WHERE clause 
+SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+RIGHT JOIN basket_b
+   ON fruit_a = fruit_b
+WHERE a IS NULL;
+---Right Anti-Join: Returns records from right table with no match in left table
+SELECT
+	basket_b.*
+	FROM basket_a
+RIGHT JOIN basket_b
+ON fruit_b = fruit_a
+WHERE a is NULL
+
+--****************************************************************************************************************************************--
+--PostgreSQL full outer join
+--****************************************************************************************************************************************--
+--The full outer join or full join returns a result set that contains all rows from both left and right tables, with the matching rows from both sides if available. 
+--In case there is no match, the columns of the table will be filled with NULL.
+
+SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+FULL OUTER JOIN basket_b
+    ON fruit_a = fruit_b;
+
+--To return rows in a table that do not have matching rows in the other, you use the full join with a WHERE clause like this
+SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+FULL JOIN basket_b
+   ON fruit_a = fruit_b
+WHERE a IS NULL OR b IS NULL;
+
+---FULL OUTER Anti-Join: returns all rows from both tables that don't have matching rows in the other table.
+
+SELECT 'A' AS source, a, fruit_a
+FROM basket_a
+LEFT JOIN basket_b ON fruit_a = fruit_b
+WHERE basket_b.fruit_b IS NULL
+
+UNION ALL
+
+SELECT 'B' AS source, b, fruit_b
+FROM basket_b
+LEFT JOIN basket_a ON fruit_b = fruit_a
+WHERE fruit_a IS NULL;

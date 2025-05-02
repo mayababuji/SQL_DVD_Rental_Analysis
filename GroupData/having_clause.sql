@@ -1,0 +1,12 @@
+--****************************************************************************************************************************************--
+--PostgreSQL HAVING
+--The HAVING clause in PostgreSQL is used to filter groups of rows after the GROUP BY aggregation has been performed, similar to how WHERE filters rows before aggregation.
+-- Key Differences: HAVING vs WHERE
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- Feature	    WHERE Clause	                   HAVING Clause  | 
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       
+-- Timing	    Filters before aggregation	        Filters after aggregation
+-- Usage	     With or without GROUP BY	        Only with GROUP BY
+-- Functions    Can't use aggregate functions	    Can use aggregate functions
+
+--****************************************************************************************************************************************--

@@ -31,3 +31,9 @@ VALUES
   (1),
   (2),
   (3);
+--The following statement uses the CROSS JOIN operator to join T1 table with T2 table:
+
+
+  SELECT *
+FROM T1
+CROSS JOIN T2;
